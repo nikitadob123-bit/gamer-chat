@@ -7,7 +7,7 @@
 
   function emit(ev) { handlers.slice().forEach(function (h) { try { h(ev); } catch (e) { console.error(e); } }); }
   function ok(r) { if (r.error) throw new Error(r.error.message || String(r.error)); return r.data; }
-  function emailFor(nick) { return nick.toLowerCase() + '@' + ((window.GC_CONFIG && window.GC_CONFIG.EMAIL_DOMAIN) || 'gc-users.example.com'); }
+  function emailFor(nick) { return nick.toLowerCase() + '@' + ((window.GC_CONFIG && window.GC_CONFIG.EMAIL_DOMAIN) || 'gc-users.invalid'); }
   function uidOrThrow() { if (!me) throw new Error('not authenticated'); return me.id; }
 
   function loadMe(userId) {

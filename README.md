@@ -5,7 +5,7 @@
 **Демо:** https://nikitadob123-bit.github.io/gamer-chat/ — пока в `js/config.js` пусто, работает **демо-режим** (данные в localStorage браузера, внутри есть боты; код сервера для демо: `NEON2026`).
 
 ## Возможности v1
-- Регистрация/вход по **нику и паролю** (синтетический email `ник@gc-users.example.com`, почта не нужна).
+- Регистрация/вход по **нику и паролю** (синтетический email `ник@gc-users.invalid`, почта не нужна).
 - Профиль: ник, аватар (эмодзи + цвет), игры и ранги, статус «Играю в…», о себе.
 - Личные и групповые чаты в реальном времени (Supabase Realtime; при недоступности WebSocket — резервный опрос раз в 4 с).
 - Серверы с каналами: создать, вступить по коду-приглашению, владелец добавляет каналы.
@@ -21,7 +21,7 @@
 3. **SQL Editor** → вставьте весь `supabase/schema.sql` → Run.
 4. **Project Settings → API**: скопируйте *Project URL* и *anon public key* в `js/config.js`:
    ```js
-   window.GC_CONFIG = { SUPABASE_URL: 'https://xxxx.supabase.co', SUPABASE_ANON_KEY: 'eyJ…', EMAIL_DOMAIN: 'gc-users.example.com' };
+   window.GC_CONFIG = { SUPABASE_URL: 'https://xxxx.supabase.co', SUPABASE_ANON_KEY: 'eyJ…', EMAIL_DOMAIN: 'gc-users.invalid' };
    ```
    Используется **только anon key** (он публичный); `service_role` в клиент не кладите никогда.
 5. Закоммитьте и запушьте — GitHub Pages обновится. `?demo=1` в URL принудительно включает демо-режим.
