@@ -1,5 +1,5 @@
 /* Service worker: офлайн-оболочка. Запросы к Supabase (другой origin) не кешируются. */
-var VERSION = 'gc-v2';
+var VERSION = 'gc-v3';
 var SHELL = ['./', 'index.html', 'manifest.webmanifest', 'css/style.css', 'vendor/supabase.js', 'js/config.js', 'js/util.js', 'js/demo.js', 'js/remote.js', 'js/app.js', 'icons/icon.svg', 'icons/icon-192.png', 'icons/icon-512.png'];
 self.addEventListener('install', function (e) {
   e.waitUntil(caches.open(VERSION).then(function (c) { return c.addAll(SHELL); }).then(function () { return self.skipWaiting(); }));

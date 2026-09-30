@@ -70,7 +70,7 @@
     },
     findByNick: function (nick) { return sb.from('profiles').select('*').ilike('nick', String(nick).trim().replace(/[%_\\]/g, '\\$&')).maybeSingle().then(ok); },
     searchProfiles: function (q) {
-      q = String(q || '').trim().replace(/[%_\\,()]/g, '');
+      q = String(q || '').trim().replace(/[\\%_]/g, '\\$&');
       var qb = sb.from('profiles').select('*').neq('id', uidOrThrow()).limit(20);
       if (q) qb = qb.ilike('nick', '%' + q + '%');
       return qb.order('created_at', { ascending: false }).then(ok);
