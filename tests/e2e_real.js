@@ -158,7 +158,7 @@ function sql(query) {
   await b.close(); if (srv) srv.close();
   // очистка
   if (process.env.SBP_TOKEN_FILE) {
-    const r = await sql(`delete from public.servers where owner_id in (select id from auth.users where email like 'gt${RUN}\\_%'); delete from auth.users where email like 'gt${RUN}\\_%' returning 1;`);
+    const r = await sql(`delete from public.servers where owner_id in (select id from auth.users where email like 'gt${RUN}\\_%'); delete from auth.users where email like 'gt${RUN}\\_%'; delete from public.chats where kind<>'channel' and id not in (select chat_id from public.chat_members) returning 1;`);
     const left = await sql(`select (select count(*) from auth.users where email like 'gt${RUN}\\_%') u, (select count(*) from public.profiles where nick like 'gt${RUN}\\_%') p, (select count(*) from public.chats where id not in (select chat_id from public.chat_members) and kind<>'channel') c`);
     console.log('cleanup:', r.slice(0, 60), left); ok(/"u":0,"p":0/.test(left), 'тестовые данные удалены');
   }

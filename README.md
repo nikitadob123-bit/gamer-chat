@@ -41,6 +41,7 @@ node tests/logic.test.js  # логика (node)
 node tests/e2e_demo.js    # headless Chrome 390×844, демо-режим
 tests/run_rls.sh          # schema.sql + RLS на локальном Postgres
 tests/run_e2e_remote.sh   # клиент remote.js ↔ локальный стенд (Postgres+PostgREST+мок Auth)
+SBP_TOKEN_FILE=… node tests/e2e_real.js [URL]  # e2e против реального Supabase (создаёт и удаляет тестовых пользователей)
 ```
 Для последних двух нужны `postgresql`, `sudo`, бинарник PostgREST в `/workspace/gc-tools/postgrest`, `puppeteer-core` и Chrome. **Реальный Supabase (Auth, Realtime/WebSocket) этими тестами не проверяется** — стенд эмулирует только REST и Auth. Скриншоты — `docs/screens/`.
 
